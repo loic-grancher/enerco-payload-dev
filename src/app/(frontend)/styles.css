@@ -1,164 +1,80 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-avocado-100: oklch(0.99 0 0);
+  --color-primary: rgb(240 34 77);
+  --color-secondary: rgb(111 114 185);
+  --color-bgmain: rgb(37 41 50);
+  --color-text: rgb(255 255 255);
+  --color-footer: rgb(22 24 30);
+  --color-darker: rgb(0 0 0);
+}
+
 :root {
-  --font-mono: 'Roboto Mono', monospace;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 18px;
-  line-height: 32px;
-
-  background: rgb(0, 0, 0);
-  -webkit-font-smoothing: antialiased;
-}
-
-html,
-body,
-#app {
-  height: 100%;
+  @apply scroll-smooth;
 }
 
 body {
-  font-family: system-ui;
-  font-size: 18px;
-  line-height: 32px;
-
-  margin: 0;
-  color: rgb(1000, 1000, 1000);
-
-  @media (max-width: 1024px) {
-    font-size: 15px;
-    line-height: 24px;
-  }
+  @apply text-white bg-bgmain;
 }
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+nav a,
+footer a {
+  @apply hover:text-primary transition-colors duration-300;
 }
-
 h1 {
-  margin: 40px 0;
-  font-size: 64px;
-  line-height: 70px;
-  font-weight: bold;
-
-  @media (max-width: 1024px) {
-    margin: 24px 0;
-    font-size: 42px;
-    line-height: 42px;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 38px;
-    line-height: 38px;
-  }
-
-  @media (max-width: 400px) {
-    font-size: 32px;
-    line-height: 32px;
-  }
+  @apply text-3xl md:text-4xl lg:text-5xl font-semibold;
 }
-
-p {
-  margin: 24px 0;
-
-  @media (max-width: 1024px) {
-    margin: calc(var(--base) * 0.75) 0;
-  }
+h2 {
+  @apply text-2xl md:text-3xl lg:text-4xl font-semibold;
 }
-
-a {
-  color: currentColor;
-
-  &:focus {
-    opacity: 0.8;
-    outline: none;
-  }
-
-  &:active {
-    opacity: 0.7;
-    outline: none;
-  }
+h3 {
+  @apply text-xl md:text-2xl lg:text-3xl font-semibold;
 }
-
-svg {
-  vertical-align: middle;
+h4 {
+  @apply text-xl font-semibold;
 }
-
-.home {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 45px;
-  max-width: 1024px;
-  margin: 0 auto;
-  overflow: hidden;
-
-  @media (max-width: 400px) {
-    padding: 24px;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-
-    h1 {
-      text-align: center;
-    }
-  }
-
-  .links {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    a {
-      text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-    }
-
-    .admin {
-      color: rgb(0, 0, 0);
-      background: rgb(1000, 1000, 1000);
-      border: 1px solid rgb(0, 0, 0);
-    }
-
-    .docs {
-      color: rgb(1000, 1000, 1000);
-      background: rgb(0, 0, 0);
-      border: 1px solid rgb(1000, 1000, 1000);
-    }
-  }
-
-  .footer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    @media (max-width: 1024px) {
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    .codeLink {
-      text-decoration: none;
-      padding: 0 0.5rem;
-      background: rgb(60, 60, 60);
-      border-radius: 4px;
-    }
-  }
+h5 {
+  @apply text-lg font-semibold;
 }
+h6 {
+  @apply text-base font-semibold;
+}
+.section {
+  @apply px-8 md:px-16 lg:px-36  py-8 md:py-16 lg:py-20;
+}
+.nav {
+  @apply px-10 py-4;
+}
+.footer {
+  @apply px-10 py-10;
+}
+/* @media (prefers-color-scheme: dark) {
+      :root {
+          --color-primary: 240 34 77;
+          --color-secondary: 111 114 185;
+          --color-bg: 37 41 50;
+          --color-text: 255 255 255;
+          --color-footer: 22 24 30;
+          --color-darker: 0 0 0;
+      }
+  } */
+/* :root[data-theme="light"] {
+      @apply scroll-smooth;
+      --color-primary: 240 34 77;
+      --color-secondary: 111 114 185;
+      --color-bg: 255 255 255;
+      --color-text: 37 41 50;
+      --color-footer: 22 24 30;
+      --color-darker: 246 231 236;
+
+  } */
+/* :root[data-theme="dark"] {
+      @apply scroll-smooth;
+      --color-primary: 240 34 77;
+      --color-secondary: 111 114 185;
+      --color-bg: 37 41 50;
+      --color-text: 255 255 255;
+      --color-footer: 22 24 30;
+      --color-darker: 0 0 0;
+     
+  } */

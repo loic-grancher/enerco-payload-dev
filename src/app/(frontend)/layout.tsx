@@ -10,9 +10,14 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
-    <html lang="en">
-      <body>
-        <main>{children}</main>
+    <html lang="fr">
+      <body  className="text-textmain bg-cover bg-no-repeat bg-right bg-fixed"
+        style={{ backgroundImage: `url('/images/backgrounds/background-flipped.png')` }}>
+        <div className=" bg-opacity-50 dark:bg-opacity-50">
+          <header>{/* <MyNav /> */}</header>
+          <main>{children}</main>
+          <footer>{/* <MyFooter /> */}</footer>
+        </div>
       </body>
     </html>
   )
