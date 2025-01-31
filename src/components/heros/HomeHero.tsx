@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import HomeCarousel from '../carousels/HomeCarousel'
+
 // import homeImage from '@/public/logos/enerco/logo_inline_white.png'
 
 
@@ -57,21 +58,21 @@ export default function HomeHero() {
               href="https://www.instagram.com/enercosarl/"
               className="mx-auto hover:text-primary transition"
             >
-              <Image src="/icons/instagram.svg" alt="logo de enerco" width={50} height={50} className='invert'/>
+              <Image src="/icons/instagram.svg" alt="logo de enerco" width={50} height={50} className='invert icon-red-hover'/>
             </a>
             <a
               href="https://www.facebook.com/ENERCO76/"
               className="mx-auto hover:text-primary transition"
             >
               {/* <Icon name="facebook" /> */}
-              <Image src="/icons/facebook.svg" alt="logo de enerco" width={50} height={50} className='invert'/>
+              <Image src="/icons/facebook.svg" alt="logo de enerco" width={50} height={50} className='invert icon-red-hover'/>
             </a>
             <a
               href="https://www.linkedin.com/company/sarl-enerco"
               className="mx-auto hover:text-primary transition"
             >
               {/* <Icon name="linkedin" /> */}
-              <Image src="/icons/linkedin.svg" alt="logo de enerco" width={50} height={50} className='invert'/>
+              <Image src="/icons/linkedin.svg" alt="logo de enerco" width={50} height={50} className='invert icon-red-hover'/>
             </a>
           </div>
         </div>

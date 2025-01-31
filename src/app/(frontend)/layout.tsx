@@ -1,5 +1,6 @@
 import React from 'react'
 import './styles.css'
+import Nav from '@/components/header/Nav'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
@@ -14,7 +15,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       <body  className="text-textmain bg-cover bg-no-repeat bg-right bg-fixed"
         style={{ backgroundImage: `url('/images/backgrounds/background-flipped.png')` }}>
         <div className=" bg-opacity-50 dark:bg-opacity-50">
-          <header>{/* <MyNav /> */}</header>
+          <header>
+            <Nav/>
+            </header>
           <main>{children}</main>
           <footer>{/* <MyFooter /> */}</footer>
         </div>

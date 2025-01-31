@@ -29,6 +29,20 @@
 .fx-zoom:hover {
   @apply transform scale-105 transition
 }
+
+.fx-moveUp:hover{
+  @apply transform -translate-y-1 transition
+}
+
+.icon-red{
+  filter: brightness(0) saturate(100%) invert(22%) sepia(82%) saturate(4258%) hue-rotate(336deg) brightness(97%) contrast(93%);
+}
+
+.icon-red-hover:hover{
+  filter: brightness(0) saturate(100%) invert(22%) sepia(82%) saturate(4258%) hue-rotate(336deg) brightness(97%) contrast(93%);
+ 
+}
+
 /* body {
   @apply text-white bg-bgmain;
 } */

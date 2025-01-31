@@ -16,7 +16,7 @@ export default function HomeCard({
 }) {
   return (
     <a href={link}>
-      <div className="card bg-neutral-900 max-w-96 shadow-sm h-full">
+      <div className="card bg-neutral-900 max-w-96 shadow-sm h-full fx-moveUp">
         <figure>
           <Image
             src={src}
@@ -28,7 +28,7 @@ export default function HomeCard({
           />
         </figure>
         <div className="card-body ">
-          <h2 className="card-title text-center">{title}</h2>
+          <h2 className="card-title text-center mx-auto">{title}</h2>
           <div className='h-full flex flex-col justify-evenly'>
           {children}
           </div>
