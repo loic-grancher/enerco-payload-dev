@@ -13,6 +13,10 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    tags: Tag;
+    posts: Post;
+    partenaires: Partenaire;
+    certifications: Certification;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -21,6 +25,10 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    tags: TagsSelect<false> | TagsSelect<true>;
+    posts: PostsSelect<false> | PostsSelect<true>;
+    partenaires: PartenairesSelect<false> | PartenairesSelect<true>;
+    certifications: CertificationsSelect<false> | CertificationsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -28,8 +36,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    home_carousel: HomeCarousel;
+  };
+  globalsSelect: {
+    home_carousel: HomeCarouselSelect<false> | HomeCarouselSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -63,6 +75,8 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: number;
+  firstName?: string | null;
+  lastName?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -95,6 +109,71 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags".
+ */
+export interface Tag {
+  id: number;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: number;
+  title: string;
+  postType: 'actualite' | 'article';
+  publicationDate: string;
+  author: number | User;
+  category: 'chaudiere' | 'pompe-a-chaleur' | 'plomberie' | 'climatisation' | 'autre';
+  tags?: string[] | null;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  images?: (number | Media)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partenaires".
+ */
+export interface Partenaire {
+  id: number;
+  name: string;
+  link?: string | null;
+  logo: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certifications".
+ */
+export interface Certification {
+  id: number;
+  name: string;
+  link?: string | null;
+  logo: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -107,6 +186,22 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'tags';
+        value: number | Tag;
+      } | null)
+    | ({
+        relationTo: 'posts';
+        value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'partenaires';
+        value: number | Partenaire;
+      } | null)
+    | ({
+        relationTo: 'certifications';
+        value: number | Certification;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -155,6 +250,8 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  firstName?: T;
+  lastName?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -182,6 +279,53 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags_select".
+ */
+export interface TagsSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts_select".
+ */
+export interface PostsSelect<T extends boolean = true> {
+  title?: T;
+  postType?: T;
+  publicationDate?: T;
+  author?: T;
+  category?: T;
+  tags?: T;
+  description?: T;
+  images?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partenaires_select".
+ */
+export interface PartenairesSelect<T extends boolean = true> {
+  name?: T;
+  link?: T;
+  logo?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certifications_select".
+ */
+export interface CertificationsSelect<T extends boolean = true> {
+  name?: T;
+  link?: T;
+  logo?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -214,6 +358,26 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home_carousel".
+ */
+export interface HomeCarousel {
+  id: number;
+  images?: (number | Media)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home_carousel_select".
+ */
+export interface HomeCarouselSelect<T extends boolean = true> {
+  images?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -1,6 +1,16 @@
 @import 'tailwindcss';
+@plugin "daisyui" {
+  themes: light , dark , dracula --default --prefersdark;
+}
+@plugin "daisyui/theme" {
+  name: "dracula";
+  default: true;
+  --color-primary: oklch(61.61% 0.232 17.9);
+  --color-primary-content: oklch(98% 0.01 240);
+  --color-secondary: oklch(98% 0.01 240);
+}
 
-@theme {
+/* @theme {
   --color-avocado-100: oklch(0.99 0 0);
   --color-primary: rgb(240 34 77);
   --color-secondary: rgb(111 114 185);
@@ -8,15 +18,20 @@
   --color-text: rgb(255 255 255);
   --color-footer: rgb(22 24 30);
   --color-darker: rgb(0 0 0);
-}
+} */
+
+
 
 :root {
   @apply scroll-smooth;
 }
 
-body {
-  @apply text-white bg-bgmain;
+.fx-zoom:hover {
+  @apply transform scale-105 transition
 }
+/* body {
+  @apply text-white bg-bgmain;
+} */
 nav a,
 footer a {
   @apply hover:text-primary transition-colors duration-300;

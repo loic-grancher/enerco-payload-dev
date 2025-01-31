@@ -1,7 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
+import HomeCarousel from '../carousels/HomeCarousel'
 // import homeImage from '@/public/logos/enerco/logo_inline_white.png'
-import Button from '../buttons/Button'
+
 
 export default function HomeHero() {
   return (
@@ -46,10 +47,10 @@ export default function HomeHero() {
             className="md:hidden min-h-[20rem] w-full object-cover rounded md:rounded-l-xl md:rounded-r-none"
           />
           <a href="/contact">
-            <Button label="Contactez-nous" />
+            <button className="btn btn-primary btn-lg" >Contactez-nous</button>
           </a>
           <a href="#services">
-            <Button label="Nos services" />
+            <button className="btn btn-secondary btn-lg">Nos services</button>
           </a>
           <div className="flex gap-3 mx-5 text-4xl text-textmain">
             <a
@@ -78,14 +79,14 @@ export default function HomeHero() {
       {/* Right side */}
 
       <div className="px-8 md:px-0 lg:pl-32">
-        <Image
+        {/* <Image
           src="/logos/enerco/logo_inline_white.png"
           alt="logo de enerco"
           width={200}
           height={200}
           className="hidden md:block h-full w-full object-cover rounded md:rounded-l-xl md:rounded-r-none shadow-md"
-        />
-        {/* <CarouselHome/> */}
+        /> */}
+        <HomeCarousel/>
       </div>
     </section>
   )

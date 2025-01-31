@@ -10,7 +10,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
-    <html lang="fr">
+    <html lang="fr" data-theme="dracula">
       <body  className="text-textmain bg-cover bg-no-repeat bg-right bg-fixed"
         style={{ backgroundImage: `url('/images/backgrounds/background-flipped.png')` }}>
         <div className=" bg-opacity-50 dark:bg-opacity-50">
